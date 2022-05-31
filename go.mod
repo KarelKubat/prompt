@@ -1,4 +1,4 @@
-module prompt
+module github.com/KarelKubat/prompt
 
 go 1.18
 
