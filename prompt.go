@@ -59,7 +59,7 @@ Useful flags:`)
 
 	// g4 client
 	if *g4clientFlag {
-		prompt = add(prompt, color.New(color.FgBlue), g4client())
+		prompt = add(prompt, color.New(color.FgHiBlue), g4client())
 	}
 
 	// Closer
