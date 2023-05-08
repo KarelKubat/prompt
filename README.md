@@ -1,5 +1,8 @@
 # prompt
 
+<!-- toc -->
+<!-- /toc -->
+
 Just my favorite console prompt. If you like it, use it for your benefit. The installation is very simple:
 
 ```shell
