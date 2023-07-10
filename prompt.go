@@ -14,13 +14,14 @@ import (
 )
 
 var (
-	hostFlag     = flag.String("host", "", "hostname, default: don't include")
-	dateFlag     = flag.Bool("date", true, "include date/time")
-	gitFlag      = flag.Bool("git", true, "include git clean/unclean")
-	cwdFlag      = flag.Bool("cwd", true, "include last part of current working directory")
-	g4clientFlag = flag.Bool("g4client", true, "include g4 client id")
-	appendFlag   = flag.String("append", "\\n", "closer for prompt, use \\\\n for newlines")
-	prependFlag  = flag.String("prepend", "\\n", "opener for prompt, use \\\\n for newlines")
+	hostFlag        = flag.String("host", "", "hostname, default: don't include")
+	dateFlag        = flag.Bool("date", true, "include date/time")
+	gitFlag         = flag.Bool("git", true, "include git clean/unclean")
+	cwdFlag         = flag.Bool("cwd", true, "include last part of current working directory")
+	g4clientFlag    = flag.Bool("g4client", true, "include g4 client id")
+	appendFlag      = flag.String("append", "\\n", "closer for prompt, use \\\\n for newlines")
+	prependFlag     = flag.String("prepend", "\\n", "opener for prompt, use \\\\n for newlines")
+	alwaysColorFlag = flag.Bool("alwayscolor", false, "when true, colorize even if `stdout` is a pipe")
 )
 
 func main() {
@@ -30,12 +31,21 @@ func main() {
 Usage: prompt - outputs nicely readable prompt to stdout.
 Use in .bashrc as follows:
   PS1=""
-  PROMPT_COMMAND="prompt -host $(hostname)"
+  PROMPT_COMMAND="prompt -host MYHOST"
+Use in .fish as follows:
+  function fish_prompt
+    prompt -host MYHOST -alwayscolor
+  end
 
 Useful flags:`)
 		flag.PrintDefaults()
 	}
 	flag.Parse()
+
+	// Always colorize?
+	if *alwaysColorFlag {
+		color.NoColor = false
+	}
 
 	prompt := escape(*prependFlag)
 
