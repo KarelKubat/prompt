@@ -32,7 +32,7 @@ Usage: prompt - outputs nicely readable prompt to stdout.
 Use in .bashrc as follows:
   PS1=""
   PROMPT_COMMAND="prompt -host MYHOST -alwayscolor"
-Use in .fish as follows:q
+Use in .fish as follows:
   function fish_prompt
     prompt -host MYHOST -alwayscolor
   end
