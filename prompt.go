@@ -36,6 +36,9 @@ Use in .fish as follows:
   function fish_prompt
     prompt -host MYHOST -alwayscolor
   end
+Use in .zshrc as follows:
+  precmd() { prompt }
+  PROMPT=''
 
 Useful flags:`)
 		flag.PrintDefaults()
